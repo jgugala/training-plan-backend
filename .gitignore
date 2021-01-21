@@ -118,7 +118,7 @@ GitHub.sublime-settings
 .history
 
 # Scritp for running Django server
-runserver.sh
+mysite/runserver.sh
 
 # Collected static files
 mysite/public/static
