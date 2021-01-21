@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'api',
 ]
 
 MIDDLEWARE = [
@@ -75,8 +76,12 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': os.environ.get('TRENING_PLAN_DB_ENGINE', None),
+        'NAME': os.environ.get('TRENING_PLAN_DB_NAME', None),
+        'USER': os.environ.get('TRENING_PLAN_DB_USER', None),
+        'PASSWORD': os.environ.get('TRENING_PLAN_DB_PASSWORD', None),
+        'HOST': os.environ.get('TRENING_PLAN_DB_HOST', None),
+        'PORT': os.environ.get('TRENING_PLAN_DB_PORT', None),
     }
 }
 
