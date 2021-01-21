@@ -1,1 +1,1 @@
-# trening-plan-backend
+# training-plan-backend
