@@ -1,7 +1,7 @@
 from django.db import models
+from positions import PositionField
 
 # Create your models here.
-from positions import PositionField
 
 
 class BaseModel(models.Model):
