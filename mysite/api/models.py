@@ -34,8 +34,8 @@ class Training(BaseModel):
 
 
 class TrainingItem(BaseModel):
-    exercise = models.ForeignKey(Exercise, on_delete=models.CASCADE)
-    training = models.ForeignKey(Training, on_delete=models.CASCADE)
+    exercise = models.ForeignKey(Exercise, on_delete=models.CASCADE, related_name='training_items')
+    training = models.ForeignKey(Training, on_delete=models.CASCADE, related_name='training_items')
     position = PositionField(collection='training')
     reps_count = models.IntegerField()
 
