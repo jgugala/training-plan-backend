@@ -1,0 +1,485 @@
+openapi: 3.0.2
+info:
+  title: ''
+  version: ''
+paths:
+  /exercises/:
+    get:
+      operationId: listExercises
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Exercise'
+          description: ''
+      tags:
+      - exercises
+    post:
+      operationId: createExercise
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Exercise'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Exercise'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Exercise'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Exercise'
+          description: ''
+      tags:
+      - exercises
+  /exercises/{id}/:
+    get:
+      operationId: retrieveExercise
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this exercise.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Exercise'
+          description: ''
+      tags:
+      - exercises
+    put:
+      operationId: updateExercise
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this exercise.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Exercise'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Exercise'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Exercise'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Exercise'
+          description: ''
+      tags:
+      - exercises
+    patch:
+      operationId: partialUpdateExercise
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this exercise.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Exercise'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Exercise'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Exercise'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Exercise'
+          description: ''
+      tags:
+      - exercises
+    delete:
+      operationId: destroyExercise
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this exercise.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - exercises
+  /trainings/:
+    get:
+      operationId: listTrainings
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Training'
+          description: ''
+      tags:
+      - trainings
+    post:
+      operationId: createTraining
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Training'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Training'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Training'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Training'
+          description: ''
+      tags:
+      - trainings
+  /trainings/{id}/:
+    get:
+      operationId: retrieveTraining
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this training.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Training'
+          description: ''
+      tags:
+      - trainings
+    put:
+      operationId: updateTraining
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this training.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Training'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Training'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Training'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Training'
+          description: ''
+      tags:
+      - trainings
+    patch:
+      operationId: partialUpdateTraining
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this training.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Training'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Training'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Training'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Training'
+          description: ''
+      tags:
+      - trainings
+    delete:
+      operationId: destroyTraining
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this training.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - trainings
+  /training_items/:
+    get:
+      operationId: listTrainingItems
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TrainingItem'
+          description: ''
+      tags:
+      - training-items
+    post:
+      operationId: createTrainingItem
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TrainingItem'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TrainingItem'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TrainingItem'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrainingItem'
+          description: ''
+      tags:
+      - training-items
+  /training_items/{id}/:
+    get:
+      operationId: retrieveTrainingItem
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this training item.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrainingItem'
+          description: ''
+      tags:
+      - training-items
+    put:
+      operationId: updateTrainingItem
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this training item.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TrainingItem'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TrainingItem'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TrainingItem'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrainingItem'
+          description: ''
+      tags:
+      - training-items
+    patch:
+      operationId: partialUpdateTrainingItem
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this training item.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TrainingItem'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TrainingItem'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TrainingItem'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrainingItem'
+          description: ''
+      tags:
+      - training-items
+    delete:
+      operationId: destroyTrainingItem
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this training item.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - training-items
+components:
+  schemas:
+    Exercise:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 200
+        description:
+          type: string
+        file:
+          type: string
+          format: binary
+      required:
+      - name
+      - description
+    Training:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 200
+        description:
+          type: string
+        training_items:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              exercise_id:
+                type: integer
+              position:
+                type: integer
+                maximum: 2147483647
+                minimum: -2147483648
+              reps_count:
+                type: integer
+                maximum: 2147483647
+                minimum: -2147483648
+            required:
+            - exercise_id
+            - reps_count
+      required:
+      - name
+      - description
+    TrainingItem:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        exercise_id:
+          type: integer
+        training_id:
+          type: integer
+        position:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        reps_count:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+      required:
+      - exercise_id
+      - training_id
+      - reps_count
