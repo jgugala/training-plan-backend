@@ -1,5 +1,4 @@
-import pdb
-
+from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils.translation import gettext as _
@@ -50,7 +49,6 @@ class TrainingSerializer(serializers.ModelSerializer):
         training = Training.objects.create(**validated_data)
         if training_items is not None:
             for training_item in training_items:
-                pdb.set_trace()
                 training_item['id'] = None
                 TrainingItem.objects.create(training=training, **training_item)
 
@@ -78,7 +76,6 @@ class TrainingSerializer(serializers.ModelSerializer):
                         training_item.get('reps_count', training_item_for_update.reps_count)
                     training_item_for_update.exercise = \
                         training_item.get('exercise', training_item_for_update.exercise)
-                    # pdb.set_trace()
                     training_item_for_update.save()
 
         # model save method (not the serializer one) - saving to the db
@@ -115,5 +112,18 @@ class RegisterSerializer(serializers.ModelSerializer):
 
 
 # Login Serializer
-class LoginSerializer(serializers.ModelSerializer):
-    pass
+class LoginSerializer(serializers.Serializer):
+    username = serializers.CharField()
+    password = serializers.CharField()
+
+    def validate(self, attrs):
+        user = authenticate(**attrs)
+        if user and user.is_active:
+            return user
+        raise serializers.ValidationError(_('Incorrect credentials'), code='incorrect_credentials')
+
+    def update(self, instance, validated_data):
+        pass
+
+    def create(self, validated_data):
+        pass

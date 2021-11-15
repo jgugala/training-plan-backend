@@ -2,7 +2,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import include, path
 from django.views.generic import TemplateView
+from knox import views as knox_views
 from rest_framework import routers
+
 from . import views
 
 router = routers.DefaultRouter()
@@ -19,8 +21,11 @@ urlpatterns = [
     # Route TemplateView to serve Swagger UI template.
     #   * Provide `extra_context` with view name of `SchemaView`.
     path('training-plan/api/swagger/', TemplateView.as_view(template_name='swagger-ui.html'), name='swagger_ui'),
+
     path('api/auth/', include('knox.urls')),
     path('training-plan/api/register/', views.RegisterAPI.as_view()),
+    path('training-plan/api/login/', views.LoginAPI.as_view()),
+    path('training-plan/api/logout/', knox_views.LogoutView.as_view(), name='knox_logout'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

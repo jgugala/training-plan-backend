@@ -4,7 +4,7 @@ from rest_framework.response import Response
 
 from .models import Exercise, TrainingItem
 from .serializers import ExerciseSerializer, TrainingSerializer, TrainingItemSerializer, RegisterSerializer, \
-    UserSerializer
+    UserSerializer, LoginSerializer
 
 
 # Create your views here.
@@ -47,7 +47,7 @@ class TrainingItemViewSet(viewsets.ModelViewSet):
 
 
 # Register API
-class RegisterAPI(generics.GenericAPIView):
+class RegisterAPI(generics.CreateAPIView):
     serializer_class = RegisterSerializer
 
     def post(self, request, *args, **kwargs):
@@ -68,3 +68,16 @@ class RegisterAPI(generics.GenericAPIView):
             'token': AuthToken.objects.create(user)[1]
         })
 
+
+# Register API
+class LoginAPI(generics.CreateAPIView):
+    serializer_class = LoginSerializer
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.validated_data
+        return Response({
+            'user': UserSerializer(user, context=self.get_serializer_context()).data,
+            'token': AuthToken.objects.create(user)[1]
+        })
