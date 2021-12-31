@@ -11,6 +11,9 @@ from .serializers import ExerciseSerializer, TrainingSerializer, TrainingItemSer
 
 # Exercise ViewSet
 class ExerciseViewSet(viewsets.ModelViewSet):
+    permission_classes = [
+        permissions.IsAuthenticated,
+    ]
     queryset = Exercise.objects.all().order_by('id')
     serializer_class = ExerciseSerializer
 
@@ -18,7 +21,7 @@ class ExerciseViewSet(viewsets.ModelViewSet):
 # Training ViewSet
 class TrainingViewSet(viewsets.ModelViewSet):
     permission_classes = [
-        permissions.IsAuthenticated
+        permissions.IsAuthenticated,
     ]
     serializer_class = TrainingSerializer
 
@@ -81,3 +84,16 @@ class LoginAPI(generics.CreateAPIView):
             'user': UserSerializer(user, context=self.get_serializer_context()).data,
             'token': AuthToken.objects.create(user)[1]
         })
+
+
+# Get User API
+class UserAPI(generics.RetrieveAPIView):
+    permission_classes = [
+        permissions.IsAuthenticated,
+    ]
+    serializer_class = UserSerializer
+
+    # Returns an object instance that should be used for detail views.
+    # May be overridden to provide more complex behavior, such as object lookups based on more than one URL kwarg.
+    def get_object(self):
+        return self.request.user

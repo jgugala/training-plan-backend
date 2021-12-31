@@ -26,6 +26,7 @@ urlpatterns = [
     path('training-plan/api/register/', views.RegisterAPI.as_view()),
     path('training-plan/api/login/', views.LoginAPI.as_view()),
     path('training-plan/api/logout/', knox_views.LogoutView.as_view(), name='knox_logout'),
+    path('training-plan/api/user/', views.UserAPI.as_view())
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

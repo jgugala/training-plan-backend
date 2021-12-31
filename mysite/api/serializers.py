@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils.translation import gettext as _
 from rest_framework import serializers
+from rest_framework.validators import UniqueValidator
 
 from .models import Exercise, Training, TrainingItem
 
@@ -99,7 +100,14 @@ class RegisterSerializer(serializers.ModelSerializer):
         # using the extra_kwargs option. As in the case of read_only_fields, this means you do not need to explicitly
         # declare the field on the serializer.
         # https://www.django-rest-framework.org/api-guide/serializers/#additional-keyword-arguments
-        extra_kwargs = {'password': {'write_only': True}}
+        extra_kwargs = {
+            'password': {'write_only': True},
+            'email': {
+                'required': True,
+                'allow_blank': False,
+                'validators': [UniqueValidator(queryset=User.objects.all())]
+            }
+        }
 
     def create(self, validated_data):
         user = User.objects.create_user(
