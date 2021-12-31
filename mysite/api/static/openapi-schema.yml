@@ -408,6 +408,20 @@ paths:
           description: ''
       tags:
       - training-plan
+  /training-plan/api/user/:
+    get:
+      operationId: retrieveUser
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+      tags:
+      - training-plan
   /training-plan/api/register/:
     post:
       operationId: createRegister
@@ -554,6 +568,24 @@ components:
       - exercise_id
       - training_id
       - reps_count
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        username:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          pattern: ^[\w.@+-]+\z
+          maxLength: 150
+        email:
+          type: string
+          format: email
+          maxLength: 254
+      required:
+      - username
     Register:
       type: object
       properties:
@@ -576,6 +608,7 @@ components:
           maxLength: 128
       required:
       - username
+      - email
       - password
     Login:
       type: object
